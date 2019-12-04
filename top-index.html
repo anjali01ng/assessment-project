@@ -14,13 +14,13 @@
   <header>
   <ul>
     <li id="p1">MOTION CINEMA</li>
-      <li><a href="index.html" target="_self">HOME</a></li>
   <li><a href="upcoming-index.html" target="_self">UPCOMING</a></li>
 
   <li><a href="top-index.html" target="_self">TOP-RATED</a></li>
 
   <li><a href="index-people.html" target="_self">PEOPLE</a></li>
     <li><a href="discover.html" target="_self">DISCOVER</a></li>
+    <li><a href="index.html" target="_self">HOME</a></li>
 </ul>
 </header>
   <h1 align="center"><font color="red">TOP </font><font color="blue">RATED </font><font color="yellow">MOVIES</font></h1>
@@ -67,7 +67,6 @@
   </div>
 </div></td></tr>
 </<table>
-
 </body>
 <script>
 var url="https://api.themoviedb.org/3/movie/top_rated?api_key=f29c80c39ceace2ef3f36ad59c1fd7e3&language=en-US&page=1"
@@ -79,7 +78,6 @@ function test()
   if(this.status==200 && this.readyState==4)
   {
   var res_data= JSON.parse(xhr.responseText)
-  console.log(res_data)
   var img_url = res_data.results[0].original_title
   var vote_c = res_data.results[0].vote_count
   var over_1 = res_data.results[0].overview
@@ -102,7 +100,7 @@ function test()
   })
   var img_url2 = res_data.results[2].original_title
     var vote_c2 = res_data.results[2].vote_count
-      var rel3= res_data.results[2].release_date
+      var rel3= res_data.results[2].release_dates
   var get_tag2=document.getElementById('two')
   get_tag2.innerHTML=img_url2+'<br>'+'Vote Count : ' +vote_c2+'<br>'+'Release Date : '+rel3
   a[2].addEventListener('click',function(){
@@ -116,12 +114,11 @@ function test()
   a[3].addEventListener('click',function(){
     alert('Overview:-'+res_data.results[3].overview)
   })
-
+s
 }
 }
 
 
 xhr.send();
-
 </script>
 </html>

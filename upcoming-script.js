@@ -6,17 +6,28 @@ var url="https://api.themoviedb.org/3/movie/upcoming?api_key=f29c80c39ceace2ef3f
     {
       if(this.status==200 && this.readyState==4)
       {
-      var res_data= JSON.parse(xhr.responseText)
-      console.log(res_data)
-      for(var i=0;i<5;i++)
+      var a= JSON.parse(xhr.responseText)
+      for(let i=0;i<=a.results.length;i++)
       {
-      var get_tag=document.getElementsByClassName('content')
+        if(a.results[i].title=="Angel Has Fallen")
+          print_content(0,i)
+       else if(a.results[i].title=="Ip Man 4: The Finale")
+          print_content(1,i)
+        else if(a.results[i].title=="Parasite")
+          print_content(2,i)
+        else if(a.results[i].title=="Star Wars: The Rise of Skywalker")
+          print_content(3,i)
+        else if(a.results[i].title=="Last Christmas")
+          print_content(4,i)
+      }
+      function print_content(j,i){
+        var get_tag=document.getElementsByClassName('content')
       var ele=document.createElement('h3')
-      ele.innerHTML=res_data.results[i].title
+      ele.innerHTML=a.results[i].title
       var para=document.createElement('p')
-      para.innerHTML='<br>'+'Release Date: '+res_data.results[i].release_date+'<br>'+'Overview:-'+'<br>'+res_data.results[i].overview
-      get_tag[i].appendChild(ele)
-      get_tag[i].appendChild(para)
+      para.innerHTML='<br>'+'Overview:-'+'<br>'+a.results[i].overview
+      get_tag[j].appendChild(ele)
+      get_tag[j].appendChild(para)
       }
   }
 }
